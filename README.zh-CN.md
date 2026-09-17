@@ -1,6 +1,6 @@
 <p align="center">
-  <img src="public/icons/icon-192x192.png" alt="MoeMail Logo" width="100" height="100">
-  <h1 align="center">MoeMail</h1>
+  <img src="public/icons/icon-192x192.png" alt="TempQue Logo" width="100" height="100">
+  <h1 align="center">TempQue</h1>
 </p>
 
 <p align="center">
@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-  <a href="https://www.producthunt.com/products/moemail?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-moemail" target="_blank" rel="noopener noreferrer"><img alt="MoeMail - OpenAPI‑first temp email, hosted &amp; ready | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1078475&amp;theme=light&amp;t=1770964043604"></a>
+  <a href="https://www.producthunt.com/products/moemail?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-moemail" target="_blank" rel="noopener noreferrer"><img alt="TempQue - OpenAPI‑first temp email, hosted &amp; ready | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1078475&amp;theme=light&amp;t=1770964043604"></a>
 </p>
 
 <p align="center">
@@ -100,7 +100,7 @@
 1. 克隆仓库：
 ```bash
 git clone https://github.com/beilunyang/moemail.git
-cd moemail
+cd tempque
 ```
 
 2. 安装依赖：
@@ -182,10 +182,10 @@ pnpm dlx tsx ./scripts/deploy/index.ts
    - `AUTH_GITHUB_ID`: GitHub OAuth App ID
    - `AUTH_GITHUB_SECRET`: GitHub OAuth App Secret
    - `AUTH_SECRET`: NextAuth Secret，用来加密 session，请设置一个随机字符串
-   - `CUSTOM_DOMAIN`: 网站自定义域名，用于访问 MoeMail (可选， 如果不填, 则会使用 Cloudflare Pages 默认域名)
-   - `PROJECT_NAME`: Pages 项目名 （可选，如果不填，则为 moemail） 
-   - `DATABASE_NAME`: D1 数据库名称 (可选，如果不填，则为 moemail-db)
-   - `KV_NAMESPACE_NAME`: Cloudflare KV namespace 名称，用于存储网站配置 （可选，如果不填，则为 moemail-kv）
+   - `CUSTOM_DOMAIN`: 网站自定义域名，用于访问 TempQue (可选， 如果不填, 则会使用 Cloudflare Pages 默认域名)
+   - `PROJECT_NAME`: Pages 项目名 （可选，如果不填，则为 tempque） 
+   - `DATABASE_NAME`: D1 数据库名称 (可选，如果不填，则为 tempque-db)
+   - `KV_NAMESPACE_NAME`: Cloudflare KV namespace 名称，用于存储网站配置 （可选，如果不填，则为 tempque-kv）
 
 2. 选择触发方式：
 
@@ -214,7 +214,7 @@ pnpm dlx tsx ./scripts/deploy/index.ts
 
 ## 邮箱域名配置
 
-在 MoeMail 个人中心页面，可以配置网站的邮箱域名，支持多域名配置，多个域名用逗号分隔
+在 TempQue 个人中心页面，可以配置网站的邮箱域名，支持多域名配置，多个域名用逗号分隔
 ![邮箱域名配置](https://pic.otaku.ren/20241227/AQAD88AxG67zeVd-.jpg "邮箱域名配置")
 
 ### Cloudflare 邮件路由配置
@@ -309,7 +309,7 @@ pnpm dlx tsx ./scripts/deploy/index.ts
 
 ## 发件功能
 
-MoeMail 支持使用临时邮箱发送邮件，基于 [Resend](https://resend.com/) 服务。
+TempQue 支持使用临时邮箱发送邮件，基于 [Resend](https://resend.com/) 服务。
 
 ### 功能特性
 
@@ -336,7 +336,7 @@ MoeMail 支持使用临时邮箱发送邮件，基于 [Resend](https://resend.co
    - 复制 API Key 供后续配置使用
 
 2. **配置发件服务**
-   - 皇帝角色登录 MoeMail
+   - 皇帝角色登录 TempQue
    - 进入个人中心页面
    - 在"Resend 发件服务配置"部分：
      - 启用发件服务开关
@@ -790,44 +790,44 @@ console.log('分享链接:', `https://your-domain.com/shared/message/${data.toke
 
 ## CLI 工具
 
-MoeMail 提供了专为 AI Agent 设计的命令行工具，用于自动化邮箱工作流。
+TempQue 提供了专为 AI Agent 设计的命令行工具，用于自动化邮箱工作流。
 
 ### 安装
 
 ```bash
-npm i -g @moemail/cli
+npm i -g @tempque/cli
 ```
 
 ### 快速上手
 
 ```bash
 # 配置 API 地址和密钥
-moemail config set api-url https://moemail.app
-moemail config set api-key YOUR_API_KEY
+tempque config set api-url https://moemail.app
+tempque config set api-key YOUR_API_KEY
 
 # 创建临时邮箱
-moemail create --domain moemail.app --expiry 1h --json
+tempque create --domain moemail.app --expiry 1h --json
 
 # 列出邮箱
-moemail list --json
+tempque list --json
 
 # 列出邮箱内的邮件
-moemail list --email-id <id> --json
+tempque list --email-id <id> --json
 
 # 等待新邮件（轮询）
-moemail wait --email-id <id> --timeout 120 --json
+tempque wait --email-id <id> --timeout 120 --json
 
 # 读取邮件内容
-moemail read --email-id <id> --message-id <id> --json
+tempque read --email-id <id> --message-id <id> --json
 
 # 从临时地址发件
-moemail send --email-id <id> --to user@example.com --subject "你好" --content "正文内容" --json
+tempque send --email-id <id> --to user@example.com --subject "你好" --content "正文内容" --json
 
 # 删除单封邮件
-moemail delete --email-id <id> --message-id <id>
+tempque delete --email-id <id> --message-id <id>
 
 # 删除整个邮箱
-moemail delete --email-id <id>
+tempque delete --email-id <id>
 ```
 
 ### Agent 工作流
@@ -836,23 +836,23 @@ AI Agent 仅需 3 次调用即可完成验证流程：
 
 ```bash
 # 1. 创建邮箱
-EMAIL=$(moemail create --domain moemail.app --expiry 1h --json)
+EMAIL=$(tempque create --domain moemail.app --expiry 1h --json)
 EMAIL_ID=$(echo $EMAIL | jq -r '.id')
 ADDRESS=$(echo $EMAIL | jq -r '.address')
 
 # 2. 等待验证邮件
-MSG=$(moemail wait --email-id $EMAIL_ID --timeout 120 --json)
+MSG=$(tempque wait --email-id $EMAIL_ID --timeout 120 --json)
 MSG_ID=$(echo $MSG | jq -r '.messageId')
 
 # 3. 读取内容，提取验证码
-CONTENT=$(moemail read --email-id $EMAIL_ID --message-id $MSG_ID --json)
+CONTENT=$(tempque read --email-id $EMAIL_ID --message-id $MSG_ID --json)
 ```
 
 详细文档见 [packages/cli/README.md](packages/cli/README.md)。
 
 ## MCP 服务器
 
-MoeMail 同时提供 [MCP](https://modelcontextprotocol.io) 服务器，让任意支持 MCP 的客户端
+TempQue 同时提供 [MCP](https://modelcontextprotocol.io) 服务器，让任意支持 MCP 的客户端
 （Claude Desktop、Cursor、Cline 等）无需调用 CLI 即可原生使用临时邮箱工具。
 
 ### 工具
@@ -876,9 +876,9 @@ MoeMail 同时提供 [MCP](https://modelcontextprotocol.io) 服务器，让任�
 ```json
 {
   "mcpServers": {
-    "moemail": {
+    "tempque": {
       "command": "npx",
-      "args": ["-y", "@moemail/mcp"],
+      "args": ["-y", "@tempque/mcp"],
       "env": {
         "MOEMAIL_API_KEY": "你的_API_KEY",
         "MOEMAIL_API_URL": "https://moemail.app"
@@ -909,7 +909,7 @@ MoeMail 同时提供 [MCP](https://modelcontextprotocol.io) 服务器，让任�
 - `KV_NAMESPACE_NAME`: Cloudflare KV namespace 名称，用于存储网站配置
 - `KV_NAMESPACE_ID`: Cloudflare KV namespace ID，用于存储网站配置 （可选， 如果不填, 则会自动通过 Cloudflare API 获取）
 - `CUSTOM_DOMAIN`: 网站自定义域名, 如：moemail.app (可选， 如果不填, 则会使用 Cloudflare Pages 默认域名)
-- `PROJECT_NAME`: Pages 项目名 （可选，如果不填，则为 moemail） 
+- `PROJECT_NAME`: Pages 项目名 （可选，如果不填，则为 tempque） 
 
 ## Github OAuth App 配置
 
@@ -956,7 +956,7 @@ MoeMail 同时提供 [MCP](https://modelcontextprotocol.io) 服务器，让任�
       关注公众号，了解更多项目进展以及AI，区块链，独立开发资讯
     </td>
     <td>
-      添加微信，备注 "MoeMail" 拉你进微信交流群
+      添加微信，备注 "TempQue" 拉你进微信交流群
     </td>
   </tr>
 </table>

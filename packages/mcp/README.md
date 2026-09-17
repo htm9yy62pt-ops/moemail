@@ -1,11 +1,11 @@
-# @moemail/mcp
+# @tempque/mcp
 
-MCP (Model Context Protocol) server for [MoeMail](https://moemail.app) — gives any
+MCP (Model Context Protocol) server for [TempQue](https://moemail.app) — gives any
 MCP-capable agent (Claude Desktop, Cursor, Cline, …) native tools for temporary
 email: create a mailbox, wait for a verification email, read it, send, and clean up.
 
-It shares the same HTTP client and config as `@moemail/cli` via `@moemail/core`, so
-it talks to the exact same MoeMail API (authenticated with an `X-API-Key`).
+It shares the same HTTP client and config as `@tempque/cli` via `@tempque/core`, so
+it talks to the exact same TempQue API (authenticated with an `X-API-Key`).
 
 ## Tools
 
@@ -24,7 +24,7 @@ it talks to the exact same MoeMail API (authenticated with an `X-API-Key`).
 
 The server reads credentials from environment variables:
 
-- `MOEMAIL_API_KEY` (required) — your MoeMail API key
+- `MOEMAIL_API_KEY` (required) — your TempQue API key
 - `MOEMAIL_API_URL` (optional) — defaults to `https://moemail.app`
 
 ## Usage
@@ -34,9 +34,9 @@ Add to your MCP client config (e.g. Claude Desktop `claude_desktop_config.json`)
 ```json
 {
   "mcpServers": {
-    "moemail": {
+    "tempque": {
       "command": "npx",
-      "args": ["-y", "@moemail/mcp"],
+      "args": ["-y", "@tempque/mcp"],
       "env": {
         "MOEMAIL_API_KEY": "mk_xxx",
         "MOEMAIL_API_URL": "https://moemail.app"

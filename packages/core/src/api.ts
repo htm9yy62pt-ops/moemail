@@ -10,12 +10,12 @@ async function request(
 
   if (!config.apiUrl) {
     throw new ConfigError(
-      "API URL not configured. Run `moemail config set api-url <url>` or set MOEMAIL_API_URL.",
+      "API URL not configured. Run `tempque config set api-url <url>` or set MOEMAIL_API_URL.",
     );
   }
   if (!config.apiKey) {
     throw new ConfigError(
-      "API Key not configured. Run `moemail config set api-key <key>` or set MOEMAIL_API_KEY.",
+      "API Key not configured. Run `tempque config set api-key <key>` or set MOEMAIL_API_KEY.",
     );
   }
 
@@ -50,7 +50,7 @@ async function request(
 
   const message = data?.error || `HTTP ${res.status}`;
 
-  // Distinguish the error classes that a MoeMail Pro server returns so callers
+  // Distinguish the error classes that a TempQue Pro server returns so callers
   // can surface them accurately instead of lumping everything into "auth failed".
   switch (res.status) {
     case 401:

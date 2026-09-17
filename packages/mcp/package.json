@@ -1,10 +1,10 @@
 {
-  "name": "@moemail/mcp",
+  "name": "@tempque/mcp",
   "version": "1.0.0",
-  "description": "MCP server for MoeMail temporary email service",
+  "description": "MCP server for TempQue temporary email service",
   "type": "module",
   "bin": {
-    "moemail-mcp": "dist/index.js"
+    "tempque-mcp": "dist/index.js"
   },
   "scripts": {
     "build": "bun build ./src/index.ts --outdir ./dist --target=node",
@@ -18,7 +18,7 @@
     "zod": "^3.25.76"
   },
   "devDependencies": {
-    "@moemail/core": "file:../core",
+    "@tempque/core": "file:../core",
     "@types/node": "^20.0.0"
   }
 }

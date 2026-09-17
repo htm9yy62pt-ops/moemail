@@ -1,32 +1,32 @@
-# MoeMail CLI
+# TempQue CLI
 
-Agent-first CLI for MoeMail temporary email service
+Agent-first CLI for TempQue temporary email service
 
 ## Install
 
 ```bash
-npm i -g @moemail/cli
+npm i -g @tempque/cli
 ```
 
 ## Quick Start
 
 ### 1. Configure endpoint and API key
 ```bash
-moemail config set api-url https://moemail.app
-moemail config set api-key YOUR_API_KEY
+tempque config set api-url https://moemail.app
+tempque config set api-key YOUR_API_KEY
 ```
 
-> Config is read from `~/.moemail/config.json`, or overridden by the
+> Config is read from `~/.tempque/config.json`, or overridden by the
 > `MOEMAIL_API_URL` / `MOEMAIL_API_KEY` environment variables.
 
 ### 2. Create a temporary email
 ```bash
-moemail create --expiry 1h
+tempque create --expiry 1h
 ```
 
 ### 3. Wait for messages
 ```bash
-moemail wait --email-id <email_id> --timeout 120
+tempque wait --email-id <email_id> --timeout 120
 ```
 
 ## Command Reference
@@ -49,42 +49,42 @@ The CLI is designed to support agent-first automation. Here's a typical workflow
 
 ```bash
 # Create temporary email and extract details
-EMAIL=$(moemail create --domain moemail.app --expiry 1h --json)
+EMAIL=$(tempque create --domain moemail.app --expiry 1h --json)
 EMAIL_ID=$(echo $EMAIL | jq -r '.id')
 ADDRESS=$(echo $EMAIL | jq -r '.address')
 
 # Use ADDRESS for signup or service registration...
 
 # Wait for verification email
-MSG=$(moemail wait --email-id $EMAIL_ID --timeout 120 --json)
+MSG=$(tempque wait --email-id $EMAIL_ID --timeout 120 --json)
 MSG_ID=$(echo $MSG | jq -r '.messageId')
 
 # Read message content
-CONTENT=$(moemail read --email-id $EMAIL_ID --message-id $MSG_ID --json)
+CONTENT=$(tempque read --email-id $EMAIL_ID --message-id $MSG_ID --json)
 
 # Extract verification code from CONTENT...
 
 # Cleanup
-moemail delete --email-id $EMAIL_ID
+tempque delete --email-id $EMAIL_ID
 ```
 
 ## AI Agent Skill
 
-The CLI ships with a built-in skill file that teaches AI agents how to use MoeMail. Install it to your agent platform:
+The CLI ships with a built-in skill file that teaches AI agents how to use TempQue. Install it to your agent platform:
 
 ```bash
 # Auto-detect installed platforms (Claude Code, Codex)
-moemail skill install
+tempque skill install
 
 # Install to a specific platform
-moemail skill install --platform claude
-moemail skill install --platform codex
+tempque skill install --platform claude
+tempque skill install --platform codex
 
 # Install to all supported platforms (skip detection)
-moemail skill install --platform all
+tempque skill install --platform all
 ```
 
-After installation, AI agents will automatically know how to create temporary emails, wait for messages, and read content using the MoeMail CLI.
+After installation, AI agents will automatically know how to create temporary emails, wait for messages, and read content using the TempQue CLI.
 
 ## JSON Output
 

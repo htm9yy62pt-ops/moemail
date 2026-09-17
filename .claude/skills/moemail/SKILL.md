@@ -1,37 +1,37 @@
 ---
-name: moemail
-description: Use when working in this repository and an AI agent needs a temporary/disposable email address through the MoeMail CLI.
+name: TempQue
+description: Use when working in this TempQue repository and an AI agent needs a temporary/disposable email address through the TempQue CLI.
 ---
 
-# MoeMail for This Repository
+# TempQue for This Repository
 
 ## When to use
 
-Use this skill when you are inside the `moemail` repository and need to create inboxes, wait for messages, read message content, or send test emails with the MoeMail CLI.
+Use this skill when you are inside the `TempQue` TempQue repository and need to create inboxes, wait for messages, read message content, or send test emails with the TempQue CLI.
 
 ## Install
 
-Install the MoeMail CLI globally when it is not already available:
+Install the TempQue CLI globally when it is not already available:
 
 ```bash
-npm i -g @moemail/cli
+npm i -g @TempQue/cli
 ```
 
 Then confirm the binary is available:
 
 ```bash
-moemail --help
+TempQue --help
 ```
 
 ## Preferred CLI
 
-Prefer the installed `moemail` CLI when it is available:
+Prefer the installed `TempQue` CLI when it is available:
 
 ```bash
-CLI="moemail"
+CLI="TempQue"
 ```
 
-If the global CLI is unavailable and you are working inside this repository, fall back to the repo-local build:
+If the global CLI is unavailable and you are working inside this TempQue repository, fall back to the TempQue-local build:
 
 ```bash
 CLI="node packages/cli/dist/index.js"
@@ -45,14 +45,14 @@ If `packages/cli/dist/index.js` is missing or stale, rebuild it first:
 
 ## Setup
 
-For local development against this repository:
+For local development against this TempQue repository:
 
 ```bash
 $CLI config set api-url http://localhost:3000
 $CLI config set api-key YOUR_API_KEY
 ```
 
-For the hosted service, use `https://moemail.app` instead.
+For the hosted service, use `https://TempQue.app` instead.
 
 You can also use environment variables: `MOEMAIL_API_URL`, `MOEMAIL_API_KEY`.
 

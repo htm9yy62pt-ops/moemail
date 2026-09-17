@@ -1,23 +1,23 @@
-# MoeMail
+# TempQue
 
 > Temporary email service with CLI tool for AI Agents
 
-MoeMail provides disposable email addresses. Install the CLI for programmatic access:
+TempQue provides disposable email addresses. Install the CLI for programmatic access:
 
 ## CLI Tool
 
-Install: npm i -g @moemail/cli
+Install: npm i -g @tempque/cli
 
-Setup: moemail config set api-url https://moemail.app && moemail config set api-key YOUR_KEY
+Setup: tempque config set api-url https://moemail.app && tempque config set api-key YOUR_KEY
 
 Commands:
-- moemail create --domain <domain> --expiry <1h|24h|3d|permanent> --json
-- moemail list --json
-- moemail list --email-id <id> --json
-- moemail wait --email-id <id> --timeout <seconds> --json
-- moemail read --email-id <id> --message-id <id> --json
-- moemail send --email-id <id> --to <addr> --subject <subj> --content <body> --json
-- moemail delete --email-id <id> --json
+- tempque create --domain <domain> --expiry <1h|24h|3d|permanent> --json
+- tempque list --json
+- tempque list --email-id <id> --json
+- tempque wait --email-id <id> --timeout <seconds> --json
+- tempque read --email-id <id> --message-id <id> --json
+- tempque send --email-id <id> --to <addr> --subject <subj> --content <body> --json
+- tempque delete --email-id <id> --json
 
 Typical workflow: create email → use address for signup → wait for verification → read content → extract code → delete
 

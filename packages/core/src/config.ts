@@ -7,7 +7,7 @@ export interface CliConfig {
   apiKey: string;
 }
 
-const CONFIG_DIR = join(homedir(), ".moemail");
+const CONFIG_DIR = join(homedir(), ".tempque");
 const CONFIG_FILE = join(CONFIG_DIR, "config.json");
 
 export function loadConfig(): CliConfig {

@@ -1,7 +1,7 @@
 
 <p align="center">
-  <img src="public/icons/icon-192x192.png" alt="MoeMail Logo" width="100" height="100">
-  <h1 align="center">MoeMail</h1>
+  <img src="public/icons/icon-192x192.png" alt="TempQue Logo" width="100" height="100">
+  <h1 align="center">TempQue</h1>
 </p>
 
 <p align="center">
@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-  <a href="https://www.producthunt.com/products/moemail?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-moemail" target="_blank" rel="noopener noreferrer"><img alt="MoeMail - OpenAPI‑first temp email, hosted &amp; ready | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1078475&amp;theme=light&amp;t=1770964043604"></a>
+  <a href="https://www.producthunt.com/products/moemail?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-moemail" target="_blank" rel="noopener noreferrer"><img alt="TempQue - OpenAPI‑first temp email, hosted &amp; ready | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1078475&amp;theme=light&amp;t=1770964043604"></a>
 </p>
 
 <p align="center">
@@ -100,7 +100,7 @@ The documentation site contains detailed usage guides, API documentation, deploy
 1. Clone the repository:
 ```bash
 git clone https://github.com/beilunyang/moemail.git
-cd moemail
+cd tempque
 ```
 
 2. Install dependencies:
@@ -184,9 +184,9 @@ This project supports automated deployment using GitHub Actions. It supports the
    - `AUTH_GITHUB_SECRET`: GitHub OAuth App Secret
    - `AUTH_SECRET`: NextAuth Secret, used to encrypt session, please set a random string
    - `CUSTOM_DOMAIN`: Custom domain for the website (Optional, if empty, uses Cloudflare Pages default domain)
-   - `PROJECT_NAME`: Pages project name (Optional, if empty, defaults to moemail)
-   - `DATABASE_NAME`: D1 database name (Optional, if empty, defaults to moemail-db)
-   - `KV_NAMESPACE_NAME`: Cloudflare KV namespace name, used for site settings (Optional, if empty, defaults to moemail-kv)
+   - `PROJECT_NAME`: Pages project name (Optional, if empty, defaults to tempque)
+   - `DATABASE_NAME`: D1 database name (Optional, if empty, defaults to tempque-db)
+   - `KV_NAMESPACE_NAME`: Cloudflare KV namespace name, used for site settings (Optional, if empty, defaults to tempque-kv)
 
 2. Choose trigger method:
 
@@ -215,7 +215,7 @@ This project supports automated deployment using GitHub Actions. It supports the
 
 ## Email Domain Configuration
 
-In the MoeMail User Profile page, you can configure the site's email domains. Supports multiple domain configurations, separated by commas.
+In the TempQue User Profile page, you can configure the site's email domains. Supports multiple domain configurations, separated by commas.
 ![Email Domain Configuration](https://pic.otaku.ren/20241227/AQAD88AxG67zeVd-.jpg "Email Domain Configuration")
 
 ### Cloudflare Email Routing Configuration
@@ -310,7 +310,7 @@ System settings are stored in Cloudflare KV, including:
 
 ## Sending Emails
 
-MoeMail supports sending emails using temporary addresses, based on [Resend](https://resend.com/) service.
+TempQue supports sending emails using temporary addresses, based on [Resend](https://resend.com/) service.
 
 ### Features
 
@@ -538,44 +538,44 @@ DELETE /api/emails/{emailId}/messages/{messageId}/share/{shareId}
 
 ## CLI Tool
 
-MoeMail provides an agent-first CLI tool for AI agents and automation workflows.
+TempQue provides an agent-first CLI tool for AI agents and automation workflows.
 
 ### Install
 
 ```bash
-npm i -g @moemail/cli
+npm i -g @tempque/cli
 ```
 
 ### Quick Start
 
 ```bash
 # Configure API endpoint and key
-moemail config set api-url https://moemail.app
-moemail config set api-key YOUR_API_KEY
+tempque config set api-url https://moemail.app
+tempque config set api-key YOUR_API_KEY
 
 # Create temporary email
-moemail create --domain moemail.app --expiry 1h --json
+tempque create --domain moemail.app --expiry 1h --json
 
 # List mailboxes
-moemail list --json
+tempque list --json
 
 # List messages in a mailbox
-moemail list --email-id <id> --json
+tempque list --email-id <id> --json
 
 # Wait for new messages (polling)
-moemail wait --email-id <id> --timeout 120 --json
+tempque wait --email-id <id> --timeout 120 --json
 
 # Read message content
-moemail read --email-id <id> --message-id <id> --json
+tempque read --email-id <id> --message-id <id> --json
 
 # Send an email from the temporary address
-moemail send --email-id <id> --to user@example.com --subject "Hello" --content "Body text" --json
+tempque send --email-id <id> --to user@example.com --subject "Hello" --content "Body text" --json
 
 # Delete a single message
-moemail delete --email-id <id> --message-id <id>
+tempque delete --email-id <id> --message-id <id>
 
 # Delete the whole mailbox
-moemail delete --email-id <id>
+tempque delete --email-id <id>
 ```
 
 ### Agent Workflow
@@ -584,36 +584,36 @@ A typical AI agent verification flow in 3 tool calls:
 
 ```bash
 # 1. Create mailbox
-EMAIL=$(moemail create --domain moemail.app --expiry 1h --json)
+EMAIL=$(tempque create --domain moemail.app --expiry 1h --json)
 EMAIL_ID=$(echo $EMAIL | jq -r '.id')
 ADDRESS=$(echo $EMAIL | jq -r '.address')
 
 # 2. Wait for verification email
-MSG=$(moemail wait --email-id $EMAIL_ID --timeout 120 --json)
+MSG=$(tempque wait --email-id $EMAIL_ID --timeout 120 --json)
 MSG_ID=$(echo $MSG | jq -r '.messageId')
 
 # 3. Read content, extract verification code
-CONTENT=$(moemail read --email-id $EMAIL_ID --message-id $MSG_ID --json)
+CONTENT=$(tempque read --email-id $EMAIL_ID --message-id $MSG_ID --json)
 ```
 
 ### AI Agent Skill
 
-Install the built-in skill so AI agents (Claude Code, Codex, etc.) automatically know how to use MoeMail:
+Install the built-in skill so AI agents (Claude Code, Codex, etc.) automatically know how to use TempQue:
 
 ```bash
 # Auto-detect installed agent platforms and install
-moemail skill install
+tempque skill install
 
 # Or specify a platform
-moemail skill install --platform claude
-moemail skill install --platform codex
+tempque skill install --platform claude
+tempque skill install --platform codex
 ```
 
 For full documentation, see [packages/cli/README.md](packages/cli/README.md).
 
 ## MCP Server
 
-MoeMail also ships an [MCP](https://modelcontextprotocol.io) server, so any
+TempQue also ships an [MCP](https://modelcontextprotocol.io) server, so any
 MCP-capable client (Claude Desktop, Cursor, Cline, …) gets native temporary-email
 tools without shelling out to the CLI.
 
@@ -638,9 +638,9 @@ Credentials are passed via environment variables:
 ```json
 {
   "mcpServers": {
-    "moemail": {
+    "tempque": {
       "command": "npx",
-      "args": ["-y", "@moemail/mcp"],
+      "args": ["-y", "@tempque/mcp"],
       "env": {
         "MOEMAIL_API_KEY": "YOUR_API_KEY",
         "MOEMAIL_API_URL": "https://moemail.app"
@@ -714,7 +714,7 @@ Welcome to submit Pull Requests or Issues to help improve this project.
       Follow official account for more project updates, AI, Blockchain, and Indie Dev news.
     </td>
     <td>
-      Add WeChat, remark "MoeMail" to join the WeChat community group.
+      Add WeChat, remark "TempQue" to join the WeChat community group.
     </td>
   </tr>
 </table>

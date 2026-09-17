@@ -5,7 +5,7 @@ import { registerTools } from "./tools.js";
 
 async function main() {
   const server = new McpServer({
-    name: "moemail",
+    name: "tempque",
     version: "1.0.0",
   });
 
@@ -14,7 +14,7 @@ async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
   // stdout is reserved for the MCP protocol; log to stderr only.
-  console.error("MoeMail MCP server running on stdio");
+  console.error("TempQue MCP server running on stdio");
 }
 
 main().catch((err) => {
