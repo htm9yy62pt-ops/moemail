@@ -1,11 +1,11 @@
 {
   "name": "TempQue",
   "short_name": "TempQue",
-  "description": "萌萌哒临时邮箱服务",
+  "description": "临时邮箱服务",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#826DD9",
+  "theme_color": "#1FAA59",
   "icons": [
     {
       "src": "/icons/icon-192x192.png",

@@ -2,6 +2,7 @@ import { Header } from "@/components/layout/header"
 import { auth } from "@/lib/auth"
 import { Shield, Share2, Clock, Code2 } from "lucide-react"
 import { ActionButton } from "@/components/home/action-button"
+import Image from "next/image"
 import { FeatureCard } from "@/components/home/feature-card"
 import { getTranslations } from "next-intl/server"
 import type { Locale } from "@/i18n/config"
@@ -19,7 +20,14 @@ export default async function Home({
   const t = await getTranslations({ locale, namespace: "home" })
 
   return (
-    <div className="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 min-h-screen">
+    <div className="relative min-h-screen bg-gray-50 dark:bg-[#0a0e0a] overflow-hidden">
+      <Image
+        src="/home-bg.png"
+        alt=""
+        fill
+        priority
+        className="home-pixel-bg object-cover object-top opacity-20 dark:opacity-35"
+      />
       <div className="container mx-auto px-4 lg:px-8 max-w-[1600px]">
         <Header />
         <main className="pt-16">
@@ -29,7 +37,7 @@ export default async function Home({
             <div className="w-full max-w-3xl mx-auto space-y-6 sm:space-y-8 py-4">
               <div className="space-y-2 sm:space-y-3">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-wider">
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-green-500">
                     {t("title")}
                   </span>
                 </h1>
@@ -71,4 +79,3 @@ export default async function Home({
     </div>
   )
 }
-

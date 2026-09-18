@@ -5,47 +5,47 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    --foreground: 120 10% 3.9%;
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --card-foreground: 120 10% 3.9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 255 65% 52%;  /* #826DD9 */
+    --popover-foreground: 120 10% 3.9%;
+    --primary: 142 70% 40%;  /* #1FAA59 像素绿 */
     --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
+    --secondary: 120 10% 95.9%;
+    --secondary-foreground: 120 10% 10%;
+    --muted: 120 10% 95.9%;
+    --muted-foreground: 120 5% 46.1%;
+    --accent: 120 20% 94%;
+    --accent-foreground: 120 15% 10%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 255 65% 52%;  /* #826DD9 */
-    --radius: 0.75rem;
+    --border: 120 15% 88%;
+    --input: 120 15% 88%;
+    --ring: 142 70% 40%;  /* #1FAA59 */
+    --radius: 0.25rem;
   }
 
   .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 255 65% 52%;  /* #826DD9 */
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
+    --background: 120 15% 4%;
+    --foreground: 120 20% 96%;
+    --card: 120 15% 6%;
+    --card-foreground: 120 20% 96%;
+    --popover: 120 15% 6%;
+    --popover-foreground: 120 20% 96%;
+    --primary: 142 75% 55%;  /* #3DDC84 像素绿（暗色模式更亮） */
+    --primary-foreground: 120 20% 4%;
+    --secondary: 120 12% 14%;
+    --secondary-foreground: 120 20% 96%;
+    --muted: 120 12% 14%;
+    --muted-foreground: 120 10% 64.9%;
+    --accent: 120 15% 16%;
+    --accent-foreground: 120 20% 96%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 255 65% 52%;  /* #826DD9 */
+    --border: 120 20% 18%;
+    --input: 120 20% 18%;
+    --ring: 142 75% 55%;
   }
 }
 
@@ -63,6 +63,12 @@
     background-image: linear-gradient(var(--primary) 1px, transparent 1px),
       linear-gradient(90deg, var(--primary) 1px, transparent 1px);
     background-size: 20px 20px;
+  }
+
+  /* 像素风主页背景：保持像素颗粒感 */
+  .home-pixel-bg {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
   }
 
   /* 整体滚动条 */

@@ -14,7 +14,7 @@ import { Providers } from "../providers"
 export const runtime = "edge"
 
 export const viewport: Viewport = {
-  themeColor: '#826DD9',
+  themeColor: '#1FAA59',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
@@ -144,4 +144,3 @@ export default async function LocaleLayout({
     </html>
   )
 }
-
