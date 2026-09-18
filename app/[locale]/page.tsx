@@ -26,7 +26,7 @@ export default async function Home({
         alt=""
         fill
         priority
-        className="home-pixel-bg object-cover object-top opacity-20 dark:opacity-35"
+        className="home-pixel-bg object-cover object-center opacity-30 dark:opacity-50"
       />
       <div className="container mx-auto px-4 lg:px-8 max-w-[1600px]">
         <Header />

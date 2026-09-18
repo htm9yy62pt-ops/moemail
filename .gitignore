@@ -50,4 +50,6 @@ public/sw.js
 
 wrangler.json
 wrangler.cleanup.json
-wrangler.email.jsonpnpm-workspace.yaml
+wrangler.email.json
+
+pnpm-workspace.yaml
